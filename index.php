@@ -1,6 +1,7 @@
 <?php
     require "conexion.php";
     session_start();
+    $id = 0;
     if( $_POST ){
         if (isset($_POST['iniciate'])) {            
             $correo = $_POST['correo'];
@@ -96,22 +97,24 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Sistema de reservaciones</title>
-        <link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/estilos.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/fullcalendar.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>             
+        <script src="js/moment.min.js"></script>
+        <script src="js/fullcalendar.min.js"></script>
+        <script src="js/es.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-        $( function() {
-            $( "#mydate" ).datepicker({
-                minDate: 0,
-                monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
-                dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ]
-            });
-        } );
-        </script>   
+        <script src="js/bootstrap-clockpicker.js"></script>
+        <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
+        <style>
+            .fc td:hover{
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body style="background: black;">       
         <nav class='navbar navbar-expand-md navbar-light bg-warning h6'>
@@ -307,9 +310,44 @@
                     <p>Ven registrate y reserva tu lugar para tus eventos, un lugar cómodo muy tranquilo y sobre todo seguro, tenemos areas extensas para que puedas aprovechar al máximo tus fiestas, no dejes pasar esta oportunidad de celebrar con los tuyos de la mejor manera, contamos con una amplia gama de servicios de calidad para tí y tus invitados.</p>
                     <br>                    
                     
-                    <div id="mydate" class="mx-auto" style="width: 200px;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-7">
+                                <div id="calendario">                    
+                                </div>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready( function(){
+                            $("#calendario").fullCalendar({
+                                dayClick:function(date,jsEvent,view){
+                                    var puedo=1;
+                                    $('#calendario').fullCalendar('clientEvents', function(event) {
+                                        var e = event.start._i.split(" ");
+                                        if(e[0]== date.format()) {
+                                            puedo = 0;
+                                        }
+                                    });
 
-                    </div>                          
+                                    if( puedo == 1 ){
+                                        var myDate = new Date();
+                                        myDate.setDate(myDate.getDate()-1);
+                                        if( date < myDate){
+                                            alert("fecha no válida");
+                                        }else{
+                                            $("#mimodal").modal();
+                                            //$("#link-reg").click();
+                                        }
+                                    }
+                                                                        
+                                },
+                                events:'http://localhost/salone/getEventosHome.php'
+                            });
+                        });
+                    </script>                          
                 </div>
             </div>
         </div>
@@ -354,11 +392,33 @@
         <footer>
             <span>Creado por <a href="#">ISC-TECNM-7MO-EQUIPO N</a> | <span class=>&copy;</span>    2020 Todos los derechos reservados.</span>
         </footer>
-        
+        <div class="modal fade" id="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo_evento">Hacer una reservación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Hola, para poder brindarle una mejor atención y hacer una reservación. Favor de registrarse e iniciar sesión.
+            </div>
+            <div class="modal-footer">
+                <button id="btnAgregar" type="button" class="btn btn-primary">Registrarme</button>
+                <button id="btnCancel" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>                
+            </div>
+            </div>
+        </div>
+        </div>
         <script>
             $(document).ready(inicio);            
             $("#init").hide();                                    
             $("#regist").hide();
+            $("#btnAgregar").click(function(){
+                $("#btnCancel").click();
+                $("#link-reg").click();
+            });
             //$("#reg-exitoso").hide();
             function inicio(){
                 $('#mostrar').click(function(){
@@ -386,10 +446,14 @@
                     $("#init").fadeOut(1000);
                     $("#regist").fadeOut(1000);
                     $("main").css("z-index", '100');  
-                    $("main").css("display", 'block');                    
+                    $("main").css("display", 'block');
+                    limpiar();                    
                     });                                        
                 });
-            }            
+            } 
+            function limpiar(){
+                $("em").remove();
+            }           
         </script>
         
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

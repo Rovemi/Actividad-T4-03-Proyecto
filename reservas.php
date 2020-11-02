@@ -187,7 +187,7 @@
                                         alert("Oh parece que esta fecha no está disponible o ha sido reservada por otro cliente");
                                     }
                                 },
-                                editable:true,
+                                /*editable:true,
                                 eventDrop:function(calEvent){
                                     $("#txtID").val(calEvent.id);
                                     $("#titulo_evento").html(calEvent.title);
@@ -196,7 +196,7 @@
                                     $("#horallegada").val(fechaHora[1]);
                                     RecolectarInformacionGUI();
                                     EnviarInformacion('modificar',nuevoEvento,true);
-                                }
+                                }*/
                             });
                         });
                     </script>                    
@@ -205,7 +205,7 @@
         </div>
         </div>
         <!-- Modal 
-        <div class="modal fade" id="dia_res" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -218,10 +218,8 @@
                 <div id="descripcion"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Agregar</button>
-                <button type="button" class="btn btn-success">Modificar</button>
-                <button type="button" class="btn btn-danger">Borrar</button>
-                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>                
+                <button type="button" class="btn btn-primary">Registrarme</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>                
             </div>
             </div>
         </div>
