@@ -11,7 +11,7 @@ se nesecita una IDE para el lenguaje PHP y abirir el proyecto completo
 ![WhatsApp Image 2020-11-01 at 10 35 55 PM](https://user-images.githubusercontent.com/72948830/97830899-1e0f7880-1c94-11eb-9e28-5e12767b5577.jpeg)
 
 # menu consultas
-![WhatsApp Image 2020-11-01 at 10 35 55 PM(1)](https://user-images.githubusercontent.com/72948830/97830904-223b9600-1c94-11eb-8eb9-8152b0db304c.jpeg)
+![consulta](https://user-images.githubusercontent.com/72948830/97929257-5c597600-1d2e-11eb-888e-81c5f88af113.PNG)
 
 # contacto y pie de pagina
 ![WhatsApp Image 2020-11-01 at 10 35 55 PM(2)](https://user-images.githubusercontent.com/72948830/97830907-24055980-1c94-11eb-8486-6a5158cf88ce.jpeg)
