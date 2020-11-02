@@ -4,3 +4,6 @@ las reservaciones estas se vinculan a una base de datos desde la pagina web para
 esta base de datos esta en su respectiva carpeta para que puedan ver el contenido 
 ademas de contar con una carpeta de resultados donde se veran imagenes de como es la pagina web en funcion
 para poder utilizar y manipular la base de datos se nesecita abrirlo en workbench
+
+para que puedar ver el proyecto y las conexiones 
+se nesecita una IDE para el lenguaje PHP y abirir el proyecto completo
