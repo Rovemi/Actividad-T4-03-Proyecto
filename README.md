@@ -28,3 +28,9 @@ se nesecita una IDE para el lenguaje PHP y abirir el proyecto completo
 # modificar y eliminar reservacion
 ![WhatsApp Image 2020-11-01 at 10 35 55 PM(6)](https://user-images.githubusercontent.com/72948830/97830918-2d8ec180-1c94-11eb-9848-7cd6b2271be1.jpeg)
 
+### integrantes del equipo
+###### Alondra ortega olivera
+###### Arturo rafael hernandez rios
+###### Edwin noe lopez pascual
+###### Jose luis romero jijon
+###### Rodolfo velasquez mijangos
